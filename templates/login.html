@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/login.css') }}">
+
+  </head>
+  <body>
+    <div class="LoginPageContainer">
+      <div class="LoginPageInnerContainer">
+        <div class="ImageContianer">
+          <img src="{{ url_for('static', filename='image/login_left.png') }}" class="GroupImage" >
+        </div>
+        <div class="LoginFormContainer">
+          <div class="LoginFormInnerContainer">
+            <div class="LogoContainer">
+              <img src="{{ url_for('static', filename='image/login_logo.png') }}" class="logo" />
+            </div>
+            <header class="header">Log in</header>
+            <header class="subHeader">
+              Welcome to <b>The Inventory Emporium!</b> Please Enter your Details
+            </header>
+
+            <form action = "{{url_for('login_validation')}}" method="post">
+              <div class="inputContainer">
+                <label class="label" for="emailAddress"
+                  ><img
+                    src="{{ url_for('static', filename='image/login_email.png') }}"
+                    class="labelIcon"
+                  /><span>Email Address*</span></label
+                >
+                <input
+                  type="email"
+                  name = "email_id"
+                  class="input"
+                  id="emailAddress"
+                  placeholder="Enter your Email Address"
+                />
+              </div>
+              <div class="inputContainer">
+                <label class="label" for="password"
+                  ><img
+                    src="{{ url_for('static', filename='image/login_pass.png') }}"
+                    class="labelIcon"
+                  /><span>Password*</span></label
+                >
+                <input
+                  type="password"
+                  name = "password_id"
+                  class="input"
+                  id="password"
+                  placeholder="Enter your Password"
+                />
+              </div>
+              <div class="OptionsContainer">
+                <div class="checkboxContainer">
+                  <input type="checkbox" id="RememberMe" class="checkbox" />
+                  <label for="RememberMe">Remember me</label>
+                </div>
+                <a href="#" class="ForgotPasswordLink">Forgot Password?</a>
+              </div>
+              <button class="LoginButton">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
