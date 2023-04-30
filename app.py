@@ -8,14 +8,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///users.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     confirm_password = db.Column(db.String(100), nullable=False)
 
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('login.html')
 
@@ -28,8 +27,20 @@ def login_validation():
 
         login = users.query.filter_by(email=email, password=password).first()
 
+        if email == "":
+            flash('Email cannot be empty')
+            return render_template("login.html")
+        
+        if password == "":
+            flash('Password cannot be empty')
+            return render_template("login.html")
+
         if login is not None:
+            flash('Successful Login')
             return redirect(url_for('home'))
+        else:
+            flash('Account do not exist')
+            return render_template('login.html')
         
     return render_template('login.html')
 
@@ -45,10 +56,29 @@ def registration_validation():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
 
-        print(f'{email}')
-        print(f'{password}')
-        print(f'{confirm_password}')
+        # email cannot be empty
+        if email == "":
+            flash('Email cannot be empty')
+            return render_template("register.html")
+        
+        # password cannot be empty
+        if password == "":
+            flash('Password cannot be empty')
+            return render_template("register.html")
+    
+        
+        #will check if already an user    
+        is_email_present = users.query.filter_by(email=email).first()
 
+        if is_email_present is not None:
+            flash('Email already exists')
+            return render_template("register.html")
+
+        if password != confirm_password:
+            flash('Passwords do not match')
+            return render_template('register.html')
+        
+        # register a new user
         register = users(email = email, password = password, confirm_password = confirm_password)
 
         if password == confirm_password:
@@ -60,7 +90,7 @@ def registration_validation():
 
     return render_template("register.html")
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('home.html')
 

@@ -22,7 +22,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/home.css') }}"
     />
-    <title>Hello, world!</title>
+    <title>The Inventory Emporium!</title>
   </head>
   <body id="body-start">
     <!-- header -->
@@ -30,10 +30,14 @@
       <div class="row align-items-center p-2 b25 text-light">
         <div class="col-md-3 d-none d-md-block h4 my-2">(+91) 987-297-2339</div>
         <div class="col-md-7 d-none d-md-block h2 text-center my-2 ">
-          Welcome to our store
+          Welcome to The Inventory Emporium!
         </div>
+
+        <!-- Replace it with logout  -->
         <a class="btn btn-outline-light mx-1" href="{{url_for('login')}}" role="button" id = "flaskLogin" >Login</a>
         <a class="btn btn-outline-light mx-1" href="{{url_for('register')}}" role="button" id = "flaskRegister" >Register</a>
+
+
       </div>
 
     </div>

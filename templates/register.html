@@ -5,36 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/login.css') }}">
-
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
   </head>
   <body>
     <div class="LoginPageContainer">
       <div class="LoginPageInnerContainer">
         <div class="ImageContianer">
-          <img src="{{ url_for('static', filename='image/login_left.png') }}" class="GroupImage" >
+          <img
+            src="{{ url_for('static', filename='image/login_left.png') }}"
+            class="GroupImage"
+          />
         </div>
         <div class="LoginFormContainer">
           <div class="LoginFormInnerContainer">
             <div class="LogoContainer">
-              <img src="{{ url_for('static', filename='image/login_in_logo.png') }}" class="logo" />
+              <img
+                src="{{ url_for('static', filename='image/login_in_logo.png') }}"
+                class="logo"
+              />
             </div>
             <header class="header">Sign Up</header>
             <header class="subHeader">
-              Welcome to <b>The Inventory Emporium!</b> Please Enter your Details
+              Welcome to <b>The Inventory Emporium!</b> Please Enter your
+              Details
             </header>
 
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for msg in messages %}
-                  <div class="alert alert-warning" role="alert">
-                    <p> {{msg}} </p>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
+            {% with messages = get_flashed_messages() %} {% if messages %} {%
+            for msg in messages %}
+            <div class="alert alert-warning" role="alert">
+              <p>{{msg}}</p>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
 
-            <form action = "{{url_for('registration_validation')}}" method="POST">
+            <form action="{{url_for('registration_validation')}}" method="POST">
               <div class="inputContainer">
                 <label class="label" for="email"
                   ><img
@@ -47,7 +63,7 @@
                   class="input"
                   id="emailAddress"
                   placeholder="Enter your Email Address"
-                  name = "email"
+                  name="email"
                 />
               </div>
               <div class="inputContainer">
@@ -62,11 +78,19 @@
                   class="input"
                   id="password"
                   placeholder="Enter your Password"
-                  name = "password"
+                  name="password"
                 />
               </div>
- 
-              <!-- change this area  -->
+
+              <!-- show password -->
+              <div class="OptionsContainer">
+                <div class="checkboxContainer">
+                  <input type="checkbox" id="show_password" class="checkbox" />
+                  <label for="show_password">Show Password</label>
+                </div>
+              </div>
+
+              <!-- confirm password  -->
               <div class="inputContainer">
                 <label class="label" for="confirm_password"
                   ><img
@@ -79,15 +103,85 @@
                   class="input"
                   id="confirm_password"
                   placeholder="Confirm your Password"
-                  name = "confirm_password"
+                  name="confirm_password"
                 />
               </div>
 
-              <button class="LoginButton" type="submit" >Sign Up</button>
+              <div class="OptionsContainer">
+                <div class="checkboxContainer">
+                  <input
+                    type="checkbox"
+                    id="show_confirm_password"
+                    class="checkbox"
+                  />
+                  <label for="show_confirm_password">Show Password</label>
+                </div>
+              </div>
+
+              <button class="LoginButton" type="submit">Sign Up</button>
+              <header class="subHeader">
+                <p>
+                  Already a member?
+                  <a
+                    class="btn btn-outline-dark mx-1 my-2"
+                    href="{{url_for('login')}}"
+                    role="button"
+                    id="direct_login"
+                    >Login</a
+                  >
+                </p>
+              </header>
             </form>
+
+            <!-- show_password function -->
+            <script>
+              var passwordField = document.getElementById("password");
+              var showPasswordCheckbox =
+                document.getElementById("show_password");
+
+              showPasswordCheckbox.addEventListener("change", function () {
+                if (showPasswordCheckbox.checked) {
+                  passwordField.type = "text";
+                } else {
+                  passwordField.type = "password";
+                }
+              });
+            </script>
+
+            <!-- show_conifrm_password function -->
+            <script>
+              var confirm_passwordField =
+                document.getElementById("confirm_password");
+              var confirm_showPasswordCheckbox = document.getElementById(
+                "show_confirm_password"
+              );
+
+              confirm_showPasswordCheckbox.addEventListener(
+                "change",
+                function () {
+                  if (confirm_showPasswordCheckbox.checked) {
+                    confirm_passwordField.type = "text";
+                  } else {
+                    confirm_passwordField.type = "password";
+                  }
+                }
+              );
+            </script>
           </div>
         </div>
       </div>
     </div>
   </body>
+
+   
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"
+  ></script>
 </html>
