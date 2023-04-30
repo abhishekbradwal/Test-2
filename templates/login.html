@@ -24,7 +24,17 @@
               Welcome to <b>The Inventory Emporium!</b> Please Enter your Details
             </header>
 
-            <form action = "{{url_for('login_validation')}}" method="post">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for msg in messages %}
+                  <div class="alert alert-warning" role="alert">
+                    <p> {{msg}} </p>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action = "{{url_for('login_validation')}}" method="POST">
               <div class="inputContainer">
                 <label class="label" for="emailAddress"
                   ><img
@@ -34,10 +44,11 @@
                 >
                 <input
                   type="email"
-                  name = "email_id"
+                  name = "email"
                   class="input"
                   id="emailAddress"
                   placeholder="Enter your Email Address"
+                  value = "{{email if email}}"
                 />
               </div>
               <div class="inputContainer">
@@ -49,7 +60,7 @@
                 >
                 <input
                   type="password"
-                  name = "password_id"
+                  name = "password"
                   class="input"
                   id="password"
                   placeholder="Enter your Password"
@@ -62,7 +73,7 @@
                 </div>
                 <a href="#" class="ForgotPasswordLink">Forgot Password?</a>
               </div>
-              <button class="LoginButton">Login</button>
+              <button class="LoginButton" type="submit">Login</button>
             </form>
           </div>
         </div>

@@ -24,9 +24,19 @@
               Welcome to <b>The Inventory Emporium!</b> Please Enter your Details
             </header>
 
-            <form>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for msg in messages %}
+                  <div class="alert alert-warning" role="alert">
+                    <p> {{msg}} </p>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action = "{{url_for('registration_validation')}}" method="POST">
               <div class="inputContainer">
-                <label class="label" for="emailAddress"
+                <label class="label" for="email"
                   ><img
                     src="{{ url_for('static', filename='image/login_email.png') }}"
                     class="labelIcon"
@@ -37,6 +47,7 @@
                   class="input"
                   id="emailAddress"
                   placeholder="Enter your Email Address"
+                  name = "email"
                 />
               </div>
               <div class="inputContainer">
@@ -51,26 +62,28 @@
                   class="input"
                   id="password"
                   placeholder="Enter your Password"
+                  name = "password"
                 />
               </div>
  
               <!-- change this area  -->
               <div class="inputContainer">
-                <label class="label" for="confirm-password"
+                <label class="label" for="confirm_password"
                   ><img
                     src="{{ url_for('static', filename='image/login_pass.png') }}"
                     class="labelIcon"
                   /><span>Confirm Password*</span></label
                 >
                 <input
-                  type="confirm-password"
+                  type="password"
                   class="input"
-                  id="confirm-password"
+                  id="confirm_password"
                   placeholder="Confirm your Password"
+                  name = "confirm_password"
                 />
               </div>
 
-              <button class="LoginButton">Sign Up</button>
+              <button class="LoginButton" type="submit" >Sign Up</button>
             </form>
           </div>
         </div>
