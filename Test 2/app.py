@@ -12,7 +12,10 @@ db = SQLAlchemy(app)
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
+    name = db.Column(db.String(40), nullable = False)
     username = db.Column(db.String(40), nullable = False)
+    address = db.Column(db.String(80), nullable = False)
+    phone_number = db.Column(db.Integer, nullable = False)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     confirm_password = db.Column(db.String(100), nullable=False)
@@ -37,7 +40,6 @@ def login_validation():
         email = request.form['email']
         password = request.form['password']
     
-        login = users.query.filter_by(email=email, password=password).first()
         is_email_present = users.query.filter_by(email = email).first()
         is_password_present = users.query.filter_by(password = password).first()
 
@@ -61,7 +63,12 @@ def login_validation():
                 session.pop('_flashes', None)
                 flash('Successful Login')
 
-                # check if session exists
+                # gather user_name
+                user_info = users.query.filter_by(email = email).first();
+                username = user_info.username
+
+                # update session
+                session['username'] = username
                 session['email'] = email
                 session.permanent = True
                 return redirect(url_for('email'))
@@ -85,15 +92,30 @@ def register():
 @app.route('/registration_validation', methods = ['POST','GET'])
 def registration_validation():
     if (request.method == 'POST'):
+        name = request.form['name']
         username = request.form['username']
+        address = request.form['address']
+        phone_number = request.form['phone_number']
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
 
+        # name cannot be empty
+        if name == "":
+            session.pop('_flashes', None)
+            flash('Name cannot be empty')
+            return render_template("register.html")
+        
         # username cannot be empty
         if username == "":
             session.pop('_flashes', None)
             flash('User Name cannot be empty')
+            return render_template("register.html")
+        
+        # address cannot be empty
+        if address == "":
+            session.pop('_flashes', None)
+            flash('Address cannot be empty')
             return render_template("register.html")
         
         # email cannot be empty
@@ -108,16 +130,23 @@ def registration_validation():
             flash('Password cannot be empty')
             return render_template("register.html")
     
-        
-        #will check if already an user    
+        # will check if already an user    
         is_email_present = users.query.filter_by(email=email).first()
 
-        #will check if username is already present
+        # will check if username is already present
         is_username_present = users.query.filter_by(username=username).first()
+
+        # will check if phone number is already present
+        is_phone_number_present = users.query.filter_by(phone_number = phone_number).first()
 
         if is_username_present is not None:
             session.pop('_flashes', None)
             flash('User Name already exists')
+            return render_template("register.html")
+
+        if is_phone_number_present is not None:
+            session.pop('_flashes', None)
+            flash('Phone Number already exists')
             return render_template("register.html")
 
         if is_email_present is not None:
@@ -131,7 +160,7 @@ def registration_validation():
             return render_template('register.html')
         
         # register a new user
-        register = users(username = username,email = email, password = password, confirm_password = confirm_password)
+        register = users(name = name,username = username,address = address,phone_number = phone_number,email = email, password = password, confirm_password = confirm_password)
 
         if password == confirm_password:
             db.session.add(register)
@@ -159,6 +188,45 @@ def email():
         return redirect(url_for('home'))
     else:
         return render_template('login.html')
+    
+@app.route('/profile')
+def profile():
+    # gather name, username, address, phone_number, email
+    name = ""
+    username = ""
+    address = ""
+    phone_number = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            name = rows.name
+            username = rows.username
+            address = rows.address
+            phone_number = rows.phone_number
+    
+    return render_template('profile.html',name = name,address = address,phone_number = phone_number,username = username,email = email)
+
+@app.route('/facebook')
+def facebook():
+  return redirect('https://www.facebook.com/')
+
+@app.route('/twitter')
+def twitter():
+  return redirect('https://twitter.com/')
+
+@app.route('/instagram')
+def instagram():
+  return redirect('https://www.instagram.com/')
+
+@app.route('/linkedin')
+def linkedin():
+  return redirect('https://in.linkedin.com/')
+
+@app.route('/whatsapp')
+def whatsapp():
+  return redirect('https://www.whatsapp.com/')
 
 @app.route('/logout')
 def logout():

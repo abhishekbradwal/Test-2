@@ -51,14 +51,30 @@
             {% endfor %} {% endif %} {% endwith %}
 
             <form action="{{url_for('registration_validation')}}" method="POST">
+              <!-- Name -->
+              <div class="inputContainer">
+                <label class="label" for="name"
+                  ><img
+                    src="{{ url_for('static', filename='image/name.png') }}"
+                    class="labelIcon"
+                  /><span>Name*</span></label
+                >
+                <input
+                  type="text"
+                  class="input"
+                  id="name"
+                  placeholder="Enter your Name"
+                  name="name"
+                />
+              </div>
 
               <!-- Username -->
               <div class="inputContainer">
                 <label class="label" for="username"
                   ><img
-                    src="{{ url_for('static', filename='image/user.png') }}"
+                    src="{{ url_for('static', filename='image/username.png') }}"
                     class="labelIcon"
-                  /><span>User Name*</span></label
+                  /><span>User Id*</span></label
                 >
                 <input
                   type="text"
@@ -66,6 +82,42 @@
                   id="username"
                   placeholder="Enter your User Name"
                   name="username"
+                />
+              </div>
+
+              <!-- Address  -->
+              <div class="inputContainer">
+                <label class="label" for="address"
+                  ><img
+                    src="{{ url_for('static', filename='image/address.png') }}"
+                    class="labelIcon"
+                  /><span>Address*</span></label
+                >
+                <input
+                  type="textarea"
+                  class="input"
+                  id="address"
+                  placeholder="Enter your Address"
+                  name="address"
+                />
+              </div>
+
+              <!-- Phone Number  -->
+              <div class="inputContainer">
+                <label class="label" for="phone_number"
+                  ><img
+                    src="{{ url_for('static', filename='image/phone_number.png') }}"
+                    class="labelIcon"
+                  /><span>Phone Number*</span></label
+                >
+                <input
+                  type="tel"
+                  class="input"
+                  id="phone_number"
+                  placeholder="Enter your Phone Number"
+                  name="phone_number"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  required
                 />
               </div>
 
@@ -188,13 +240,34 @@
                 }
               );
             </script>
+
+            <!-- match phone number  -->
+            <script>
+              var phone_input = document.getElementById("phone_number");
+
+              phone_input.addEventListener("input", () => {
+                phone_input.setCustomValidity("");
+                phone_input.checkValidity();
+              });
+
+              phone_input.addEventListener("invalid", () => {
+                if (phone_input.value === "") {
+                  phone_input.setCustomValidity("Enter phone number!");
+                } else {
+                  phone_input.setCustomValidity(
+                    "Enter phone number in this format: 123-456-7890"
+                  );
+                }
+              });
+            </script>
+
+            
           </div>
         </div>
       </div>
     </div>
   </body>
 
-   
   <script
     src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
