@@ -61,6 +61,8 @@
             {% endfor %} {% endif %} {% endwith %}
 
             <form action="{{url_for('login_validation')}}" method="POST">
+
+              <!-- Email  -->
               <div class="inputContainer">
                 <label class="label" for="emailAddress"
                   ><img
@@ -77,6 +79,8 @@
                   value="{{email if email}}"
                 />
               </div>
+
+              <!-- Password  -->
               <div class="inputContainer">
                 <label class="label" for="password"
                   ><img
@@ -92,6 +96,8 @@
                   placeholder="Enter your Password"
                 />
               </div>
+
+              <!-- Show Password  -->
               <div class="OptionsContainer">
                 <div class="checkboxContainer">
                   <input type="checkbox" id="show_password" class="checkbox" />
