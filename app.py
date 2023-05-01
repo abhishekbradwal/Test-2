@@ -189,6 +189,76 @@ def email():
     else:
         return render_template('login.html')
     
+@app.route('/recover_email')
+def recover_email():
+    return render_template('email_rendering_forgot_password.html')
+    
+@app.route('/forgot_password', methods = ['GET', 'POST'])
+def forgot_password():
+    if (request.method == 'POST'):
+        email = request.form['email']
+
+        if email == "":
+            session.pop('_flashes', None)
+            flash('Email address cannot be empty')
+            return render_template('email_rendering_forgot_password.html')
+        
+        user_info = users.query.all()
+        verify_email = ""
+        for rows in user_info:
+            email_id = rows.email
+            if email_id == email:
+                verify_email = email
+
+        if verify_email != email:
+            session.pop('_flashes', None)
+            flash('Email address do not exist')
+            return render_template('email_rendering_forgot_password.html')
+        
+        else:
+            session.pop('_flashes', None)
+            flash('Change your password')
+            return render_template('forgot_password.html',email = email)
+    
+    return render_template('login.html')
+
+@app.route('/update_password', methods = ['GET','POST'])
+def update_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        new_password = request.form['update_password']
+
+        user_info = users.query.all()
+        verify_email = ""
+        for rows in user_info:
+            email_id = rows.email
+            if email_id == email:
+                verify_email = email
+
+        if verify_email != email:
+            session.pop('_flashes',None)
+            flash('Please do not change the email')
+            return render_template('email_rendering_forgot_password.html')
+        
+        if new_password == "":
+            session.pop('_flashes',None)
+            flash('Password cannot be empty')
+            return render_template('forgot_password.html')
+        
+        update_user_info = users.query.filter_by(email = email).first()
+        update_user_info.password = new_password
+        update_user_info.confirm_password = new_password
+        db.session.add(update_user_info)
+        db.session.commit()
+
+        session.pop('_flashes',None)
+        flash('Password changed successfully')
+
+        return redirect(url_for('login'))
+
+    return render_template('forgot_password.html')
+    
+    
 @app.route('/profile')
 def profile():
     # gather name, username, address, phone_number, email
