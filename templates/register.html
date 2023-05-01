@@ -51,6 +51,25 @@
             {% endfor %} {% endif %} {% endwith %}
 
             <form action="{{url_for('registration_validation')}}" method="POST">
+
+              <!-- Username -->
+              <div class="inputContainer">
+                <label class="label" for="username"
+                  ><img
+                    src="{{ url_for('static', filename='image/user.png') }}"
+                    class="labelIcon"
+                  /><span>User Name*</span></label
+                >
+                <input
+                  type="text"
+                  class="input"
+                  id="username"
+                  placeholder="Enter your User Name"
+                  name="username"
+                />
+              </div>
+
+              <!-- Email  -->
               <div class="inputContainer">
                 <label class="label" for="email"
                   ><img
@@ -66,6 +85,8 @@
                   name="email"
                 />
               </div>
+
+              <!-- Password -->
               <div class="inputContainer">
                 <label class="label" for="password"
                   ><img
