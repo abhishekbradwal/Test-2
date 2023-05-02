@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, flash, session
+from flask import Flask, render_template, url_for, redirect, request, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
 
@@ -217,7 +217,7 @@ def forgot_password():
         else:
             session.pop('_flashes', None)
             flash('Change your password')
-            return render_template('forgot_password.html')
+            return render_template('forgot_password.html',email = email)
     
     return render_template('login.html')
 
@@ -276,6 +276,185 @@ def profile():
             phone_number = rows.phone_number
     
     return render_template('profile.html',name = name,address = address,phone_number = phone_number,username = username,email = email)
+
+@app.route('/settings')
+def settings():
+    name = ""
+    username = ""
+    address = ""
+    phone_number = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            name = rows.name
+            username = rows.username
+            address = rows.address
+            phone_number = rows.phone_number
+    return render_template('settings.html',name = name,address = address,phone_number = phone_number,username = username,email = email)
+
+@app.route('/render_name')
+def render_name():
+    name = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            name = rows.name
+    return render_template('update_name.html',name = name)
+
+@app.route('/update_name',methods = ['GET','POST'])
+def update_name():
+
+    # initial user name
+    name = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            name = rows.name
+
+    if request.method == 'POST':
+        new_name = request.form['update_name']
+
+        if name == new_name:
+            session.pop('_flashes',None)
+            flash('New Name cannot be same')
+            return redirect(url_for('render_name'))
+        
+        if new_name == "":
+            session.pop('_flashes',None)
+            flash('New Name cannot be empty')
+            return redirect(url_for('render_name'))
+
+        else:
+            session.pop('_flashes',None)
+            flash('Name successfully changed')
+
+            update_user_info = users.query.filter_by(email = email).first()
+            update_user_info.name = new_name
+            db.session.add(update_user_info)
+            db.session.commit()
+
+            return redirect(url_for('settings'))
+
+    return render_template('update_name.html')
+
+@app.route('/render_address')
+def render_address():
+    address = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            address = rows.address
+    return render_template('update_address.html',address = address)
+
+@app.route('/update_address',methods = ['GET','POST'])
+def update_address():
+
+    # initial user address
+    address = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            address = rows.address
+
+    if request.method == 'POST':
+        new_address = request.form['update_address']
+
+        if address == new_address:
+            session.pop('_flashes',None)
+            flash('New Address cannot be same')
+            return redirect(url_for('render_address'))
+        
+        if new_address == "":
+            session.pop('_flashes',None)
+            flash('Address cannot be empty')
+            return redirect(url_for('render_address'))
+
+        else:
+            session.pop('_flashes',None)
+            flash('Address successfully changed')
+
+            update_user_info = users.query.filter_by(email = email).first()
+            update_user_info.address = new_address
+            db.session.add(update_user_info)
+            db.session.commit()
+
+            return redirect(url_for('settings'))
+
+    return render_template('update_address.html')
+
+@app.route('/render_phone_number')
+def render_phone_number():
+    phone_number = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            phone_number = rows.phone_number
+
+    return render_template('update_phone_number.html',phone_number = phone_number)
+
+@app.route('/update_phone_number',methods = ['GET','POST'])
+def update_phone_number():
+
+    # initial user phone number
+    phone_number = ""
+    email = session['email']
+    user_info = users.query.all()
+    for rows in user_info:
+        email_id = rows.email
+        if email_id == email:
+            phone_number = rows.phone_number
+
+    if request.method == 'POST':
+        new_phone_number = request.form['update_phone_number']
+
+        if phone_number == new_phone_number:
+            session.pop('_flashes',None)
+            flash('New Phone Number cannot be same')
+            return redirect(url_for('render_phone_number'))
+        
+        _count = 0; _count_int = 0; _count_size = 0; flag = True
+        for index in new_phone_number:
+            if index == '-':
+                if _count_size == 3 or _count_size == 7:
+                    _count = _count + 1
+                else:
+                    flag = False
+            if index == '0' or index == '1' or index == '2' or index == '3' or index == '4':
+                _count_int = _count_int + 1
+            if index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+                _count_int = _count_int + 1
+            _count_size = _count_size + 1
+
+        print(flag)
+
+        if _count_int == 10 and _count == 2 and _count_size == 12 and flag == True:
+            session.pop('_flashes',None)
+            flash('Phone Number successfully changed')
+            update_user_info = users.query.filter_by(email = email).first()
+            update_user_info.phone_number = new_phone_number
+            db.session.add(update_user_info)
+            db.session.commit()
+
+            return redirect(url_for('settings'))
+        
+        else:
+            session.pop('_flashes',None)
+            flash('Please type in current phone number format')
+            return redirect(url_for('render_phone_number'))
+
+    return render_template('update_phone_number.html')
 
 @app.route('/facebook')
 def facebook():

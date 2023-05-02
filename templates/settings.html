@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
+    <title>Settings Page</title>
 
     <!-- Custom Css -->
     <link
@@ -52,50 +52,83 @@
         />
 
         <div class="name">{{username}}</div>
-        <div class="job"> Customer </div>
+        <div class="job">Customer</div>
       </div>
 
       <div class="sidenav-url">
         <div class="url">
-          <a href="{{url_for('profile')}}" class="active">Profile</a>
+          <a href="{{url_for('settings')}}" class="active">Settings</a>
           <hr align="center" />
         </div>
         <div class="url">
-          <a href="{{url_for('settings')}}">Settings</a>
+          <a href="{{url_for('profile')}}">Profile</a>
           <hr align="center" />
         </div>
       </div>
     </div>
     <!-- End -->
+    
+    {% with messages = get_flashed_messages() %} {% if messages %} {%
+      for msg in messages %}
+      <div
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
+        {{msg}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
 
     <!-- Main -->
     <div class="main">
       <h2>IDENTITY</h2>
       <div class="card">
         <div class="card-body">
-          <i class="fa fa-pen fa-xs edit"></i>
           <table>
             <tbody>
-              <tr>
-                <td>Name</td>
-                <td>:</td>
-                <td>{{name}}</td>
-              </tr>
+
+                <!-- Section for changing name  -->
+                <tr>
+                  <td>Name</td>
+                  <td>:</td>
+                  <td>{{name}}</td>
+                  <td>
+                    <a href="{{url_for('render_name')}}"> <i class="fas fa-edit"></i> </a>
+                  </td>
+                </tr>
+
+              <!-- Email will not change  -->
               <tr>
                 <td>Email</td>
                 <td>:</td>
                 <td>{{email}}</td>
               </tr>
-              <tr>
-                <td>Address</td>
-                <td>:</td>
-                <td>{{address}}</td>
-              </tr>
-              <tr>
-                <td>Phone Number</td>
-                <td>:</td>
-                <td>{{phone_number}}</td>
-              </tr>
+
+              <!-- Section to change address  -->
+                <tr>
+                  <td>Address</td>
+                  <td>:</td>
+                  <td>{{address}}</td>
+                  <td>
+                    <a href = "{{url_for('render_address')}}" > <i class="fas fa-edit"></i> </a>
+                  </td>
+                </tr>
+
+              <!-- Form to update phone number  -->
+                <tr>
+                  <td>Phone Number</td>
+                  <td>:</td>
+                  <td>{{phone_number}}</td>
+                  <td>
+                    <a href="{{url_for('render_phone_number')}}"> <i class="fas fa-edit"></i> </a>
+                  </td>
+                </tr>
+
             </tbody>
           </table>
         </div>
@@ -106,42 +139,48 @@
         <div class="card-body">
           <i class="fa fa-pen fa-xs edit"></i>
           <div class="social-media">
-
             <!-- facebook -->
             <span class="fa-stack fa-sm">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <a href = "{{url_for('facebook')}}" > <i class="fab fa-facebook fa-stack-1x fa-inverse"></i> </a>
+              <a href="{{url_for('facebook')}}">
+                <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+              </a>
             </span>
 
             <!-- twitter  -->
             <span class="fa-stack fa-sm">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <a  href = "{{url_for('twitter')}}" > <i class="fab fa-twitter fa-stack-1x fa-inverse">   </i> </a>
+              <a href="{{url_for('twitter')}}">
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"> </i>
+              </a>
             </span>
 
             <!-- instagram -->
             <span class="fa-stack fa-sm">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <a href = "{{ url_for('instagram') }}" > <i class="fab fa-instagram fa-stack-1x fa-inverse"></i> </a>
+              <a href="{{ url_for('instagram') }}">
+                <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+              </a>
             </span>
 
             <!-- linkedin -->
             <span class="fa-stack fa-sm">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <a href = "{{ url_for('linkedin') }}" > <i class="fab fa-invision fa-stack-1x fa-inverse"></i> </a>
+              <a href="{{ url_for('linkedin') }}">
+                <i class="fab fa-invision fa-stack-1x fa-inverse"></i>
+              </a>
             </span>
 
             <!-- whatsapp  -->
             <span class="fa-stack fa-sm">
               <i class="fas fa-circle fa-stack-2x"></i>
-              <a href = "{{ url_for('whatsapp') }}" > <i class="fab fa-whatsapp fa-stack-1x fa-inverse"></i> </a>
+              <a href="{{ url_for('whatsapp') }}">
+                <i class="fab fa-whatsapp fa-stack-1x fa-inverse"></i>
+              </a>
             </span>
-
           </div>
         </div>
-      </div> 
-
-
+      </div>
     </div>
     <!-- End -->
   </body>
