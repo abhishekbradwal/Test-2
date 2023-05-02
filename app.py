@@ -214,11 +214,10 @@ def forgot_password():
             session.pop('_flashes', None)
             flash('Email address do not exist')
             return render_template('email_rendering_forgot_password.html')
-        
         else:
             session.pop('_flashes', None)
             flash('Change your password')
-            return render_template('forgot_password.html',email = email)
+            return render_template('forgot_password.html')
     
     return render_template('login.html')
 
