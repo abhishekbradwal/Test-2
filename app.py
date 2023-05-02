@@ -484,7 +484,6 @@ def place_order():
         description = request.form['description']
 
         return render_template('place_order.html', category=category, price = price, heading = heading, description = description)
-########################################
 
 @app.route('/facebook')
 def facebook():
