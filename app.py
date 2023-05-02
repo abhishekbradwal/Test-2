@@ -32,7 +32,6 @@ def login():
 
     return render_template('login.html')
 
-
 @app.route('/login_validation', methods=['POST', 'GET'])
 def login_validation():
     if (request.method == "POST"):
@@ -510,6 +509,43 @@ def whatsapp():
 @app.route('/living_room')
 def living_room():
     return render_template('living_room.html')
+
+@app.route('/bedroom')
+def bedroom():
+    return render_template('bedroom.html')
+
+@app.route('/mattress')
+def mattress():
+    return render_template('mattress.html')
+
+@app.route('/kitchen')
+def kitchen():
+    return render_template('kitchen.html')
+
+@app.route('/baby_kids')
+def baby_kids():
+    return render_template('baby_kids.html')
+
+@app.route('/outdoor')
+def outdoor():
+    return render_template('outdoor.html')
+
+@app.route('/home_office')
+def home_office():
+    return render_template('home_office.html')
+
+@app.route('/home_decor')
+def home_decor():
+    return render_template('home_decor.html')
+
+@app.route('/rugs')
+def rugs():
+    return render_template('rugs.html')
+
+@app.route('/lighting')
+def lighting():
+    return render_template('lighting.html')
+
 
 @app.route('/logout')
 def logout():

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="Shop" content="FrontPage.By.Ruben.Vardanyan" />
+    <meta name="Furniture" content="FrontPage.By.Ruben.Vardanyan" />
+
+    <meta charset="utf-8" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <title>The Inventory Emporium- Home office!</title>
+  </head>
+  <body id="body-start">
+    <!-- header -->
+    <div class="container-fluid">
+      <div class="row align-items-center p-2 b25 text-light">
+        <div class="col-md-3 d-none d-md-block h4 my-2">(+91) 987-297-2339</div>
+        <div class="col-md-7 d-none d-md-block h2 text-center my-2">
+          Welcome to The Inventory Emporium!
+        </div>
+
+        <!-- Logout  -->
+        <div class="col-6 col-md-2 pr-3">
+          <div class="dropdown float-right">
+            <button
+              class="btn b1 text-white dropdown-toggle btn-outline-dark"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              My account
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
+
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
+              <a class="dropdown-item" href="#">My Orders</a>
+              <a class="dropdown-item" href="#">Account Settings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header -->
+
+    <!-- Top Image -->
+
+    <!-- Alert message -->
+
+    <div
+      class="alert b25 text-light alert-dismissible fade show m-0 rounded-0 fixed-bottom"
+      role="alert"
+      style="opacity: 0.9"
+    >
+      We work five days a week, 24 hours a day!!!
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- deligation end -->
+
+    <!-- Shop by department-icons -->
+
+    <div class="container" id="depart">
+      <h3
+        class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
+      >
+        Department -  Home Office 
+      </h3>
+    </div>
+
+    <!-- New offers -->
+
+    <div class="container" id="newOffers">
+      <div class="row my-2 justify-content-center">
+
+
+        <!-- Image 1 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_1.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Productive Space
+                </h5>
+                <p class="card-text text-center">
+                    Boost your productivity with a dedicated and efficient home office space.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_1" />
+              <input type="hidden" name="price" value="299" />
+              <input type="hidden" name="heading" value="Productive Space" />
+              <input type="hidden" name="description" value="Boost your productivity with a dedicated and efficient home office space." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now 
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_2.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Modern Workspace
+                </h5>
+                <p class="card-text text-center">
+                    Create a modern workspace that's both functional and stylish.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_2" />
+              <input type="hidden" name="price" value="321" />
+              <input type="hidden" name="heading" value="Modern Workspace" />
+              <input type="hidden" name="description" value="Create a modern workspace that's both functional and stylish." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Imgae 3  -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_3.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Comfortable Office
+                </h5>
+                <p class="card-text text-center">
+                    Work in comfort with our ergonomic and adjustable office furniture options.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_3" />
+              <input type="hidden" name="price" value="542" />
+              <input type="hidden" name="heading" value="Comfortable Office" />
+              <input type="hidden" name="description" value="Work in comfort with our ergonomic and adjustable office furniture options." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Image 4  -->
+        <div class="col-12 col-sm-6 col-lg-4 my-5">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_4.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Executive Suite
+                </h5>
+                <p class="card-text text-center">
+                    Upgrade your home office to an executive suite with our premium designs.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_4" />
+              <input type="hidden" name="price" value="635" />
+              <input type="hidden" name="heading" value="Executive Suite" />
+              <input type="hidden" name="description" value="Upgrade your home office to an executive suite with our premium designs." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="col-12 col-sm-6 col-lg-4 my-5">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_5.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Creative Den
+                </h5>
+                <p class="card-text text-center">
+                    Unleash your creativity in a comfortable and inspiring den.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_5" />
+              <input type="hidden" name="price" value="345" />
+              <input type="hidden" name="heading" value="Creative Den" />
+              <input type="hidden" name="description" value="Unleash your creativity in a comfortable and inspiring den." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Image 6  -->
+        <div class="col-12 col-sm-6 col-lg-4 my-5">
+          <form action="{{url_for('place_order')}}" method="POST">
+            <div class="card border-0">
+              <img
+                src="{{ url_for('static', filename='image/home_office_6.png') }}"
+                class="card-img-top border-0"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold">
+                    Work-From-Home Haven
+                </h5>
+                <p class="card-text text-center">
+                    Create your perfect work-from-home haven with our versatile office solutions.
+                </p>
+              </div>
+              <input type="hidden" name="category" value="home_office_6" />
+              <input type="hidden" name="price" value="432" />
+              <input type="hidden" name="heading" value= "Work-From-Home Haven" />
+              <input type="hidden" name="description" value="Create your perfect work-from-home haven with our versatile office solutions." />
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Buy Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- End new offers-->
+
+    <!-- footer -->
+    <!-- scroll go top start -->
+    <a id="myBtn" class="gotopbtn" href="#body-start"
+      ><img
+        src="https://cdn3.iconfinder.com/data/icons/road-sign/154/road-sign-top-arrow-yellow-attention-512.png"
+        width="50"
+        height="50"
+        loading="lazy"
+    /></a>
+    <!-- scroll end -->
+    <!-- loading start -->
+    <div class="loader-wrapper">
+      <div class="loader-inner">
+        <div class="st1"></div>
+        <div class="st2"></div>
+        <div class="st3"></div>
+      </div>
+    </div>
+    <!-- loading end -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+      });
+      //scroll Top
+      //Get the button
+      var mybutton = document.getElementById("myBtn");
+      mybutton.style.display = "none";
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 500 ||
+          document.documentElement.scrollTop > 500
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
