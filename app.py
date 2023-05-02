@@ -437,8 +437,6 @@ def update_phone_number():
                 _count_int = _count_int + 1
             _count_size = _count_size + 1
 
-        print(flag)
-
         if _count_int == 10 and _count == 2 and _count_size == 12 and flag == True:
             session.pop('_flashes',None)
             flash('Phone Number successfully changed')
@@ -455,6 +453,39 @@ def update_phone_number():
             return redirect(url_for('render_phone_number'))
 
     return render_template('update_phone_number.html')
+
+########################################
+@app.route('/render_previous_page', methods = ['GET','POST'])
+def render_previous_page():
+    if request.method == 'POST':
+        if 'category_page' in request.form:
+            category_page = request.form['category_page']
+
+            # category is the html page
+            category = ""
+            _count = len(category_page)
+            _count = _count - 2
+
+            for index in range(_count):
+                category = category + category_page[index]
+
+            category = category + '.html'
+            session.pop('_flashes',None)
+            flash('Order cancelled')
+            return render_template(f'{category}')
+        
+    return render_template('home.html')
+
+@app.route('/place_order', methods = ['POST','GET'])
+def place_order():
+    if request.method == 'POST':
+        category = request.form['category']
+        price = float(request.form['price'])
+        heading = request.form['heading']
+        description = request.form['description']
+
+        return render_template('place_order.html', category=category, price = price, heading = heading, description = description)
+########################################
 
 @app.route('/facebook')
 def facebook():
@@ -475,6 +506,10 @@ def linkedin():
 @app.route('/whatsapp')
 def whatsapp():
   return redirect('https://www.whatsapp.com/')
+
+@app.route('/living_room')
+def living_room():
+    return render_template('living_room.html')
 
 @app.route('/logout')
 def logout():

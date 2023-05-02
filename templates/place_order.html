@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Order Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/place_order.css') }}"
+    />
+  </head>
+  <body>
+    <main>
+      {% set image_url = category + '.png' %} 
+      {% set cost_price = '$' + '%.2f' % price %}
+      <article class="card">
+        <div class="card__img__container">
+          <img
+            class="card__img"
+            src="{{ url_for('static', filename='image/' + image_url) }}"
+            alt="dancing-with-music-illustration"
+          />
+        </div>
+        <div class="card__content">
+          <h1 class="card__title">{{heading}}</h1>
+          <p class="card__desc">{{description}}</p>
+
+          <div class="plan__info">
+            <img
+              class="plan__icon"
+              src="{{ url_for('static', filename='image/price_tag.png') }}"
+              height="43"
+              width="43"
+              alt="{{category}}"
+            />
+            <div class="plan__detail">
+              <h2 class="plan__title">Price</h2>
+              <p class="plan__price">{{cost_price}}</p>
+            </div>
+          </div>
+
+          <a href="#">
+            <button class="btn pay__btn">Proceed to Payment</button>
+          </a>
+
+          <!-- render previous page  -->
+          <form action="{{url_for('render_previous_page')}}" method="POST">
+            <input type="hidden" name="category_page" value="{{category}}" />
+            <button class="btn cancel__btn" type="submit">Cancel Order</button>
+          </form>
+        </div>
+      </article>
+    </main>
+
+    <div class="attribution">
+      Sold by <a href="{{url_for('home')}}"> The Inventory Emporium! </a>
+    </div>
+  </body>
+</html>
