@@ -11,9 +11,10 @@
     />
   </head>
   <body>
+
     <main>
-      {% set image_url = category + '.png' %} 
-      {% set cost_price = '$' + '%.2f' % price %}
+      {% set image_url = category + '.png' %} {% set cost_price = '$' + '%.2f' %
+      price %}
       <article class="card">
         <div class="card__img__container">
           <img
@@ -40,9 +41,27 @@
             </div>
           </div>
 
-          <a href="#">
-            <button class="btn pay__btn">Proceed to Payment</button>
-          </a>
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+            messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{msg}}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+
+          <!-- Place order  -->
+          <form action="{{url_for('confirmed_order')}}" method="POST">
+            <input type="hidden" name="confirmed_category_page" value="{{category}}" />
+            <input type="hidden" name="confirmed_price" value="{{price}}" />
+            <input type="hidden" name="confirmed_heading" value="{{heading}}" />
+            <input type="hidden" name="confirmed_description" value="{{description}}" />
+            <button class="btn pay__btn">Place Order</button>
+          </form>
 
           <!-- render previous page  -->
           <form action="{{url_for('render_previous_page')}}" method="POST">

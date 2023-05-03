@@ -453,9 +453,10 @@ def update_phone_number():
 
     return render_template('update_phone_number.html')
 
-########################################
+# render previous page
 @app.route('/render_previous_page', methods = ['GET','POST'])
 def render_previous_page():
+    session.pop('_flashes',None)
     if request.method == 'POST':
         if 'category_page' in request.form:
             category_page = request.form['category_page']
@@ -468,13 +469,16 @@ def render_previous_page():
             for index in range(_count):
                 category = category + category_page[index]
 
+
             category = category + '.html'
             session.pop('_flashes',None)
             flash('Order cancelled')
             return render_template(f'{category}')
-        
+    
+    session.pop('_flashes',None)
     return render_template('home.html')
 
+# placed order
 @app.route('/place_order', methods = ['POST','GET'])
 def place_order():
     if request.method == 'POST':
@@ -483,7 +487,36 @@ def place_order():
         heading = request.form['heading']
         description = request.form['description']
 
+        session.pop('_flashes',None)
+
         return render_template('place_order.html', category=category, price = price, heading = heading, description = description)
+    
+
+# order confirmed
+@app.route('/confirmed_order', methods = ['GET', 'POST'])
+def confirmed_order():
+    if request.method == 'POST':
+        confirmed_category_page = request.form['confirmed_category_page']
+        confirmed_price = request.form['confirmed_price']
+        confirmed_heading = request.form['confirmed_heading']
+        confirmed_description = request.form['confirmed_description']
+
+        # category is the html page
+        category = ""
+        _count = len(confirmed_category_page)
+        _count = _count - 2
+
+        for index in range(_count):
+            category = category + confirmed_category_page[index]
+
+        category = category + '.html'
+
+        session.pop('_flashes',None)
+        flash('Order placed successfully')
+        return render_template(f'{category}',confirmed_category_page = confirmed_category_page, confirmed_price = confirmed_price,confirmed_heading = confirmed_heading, confirmed_description = confirmed_description)
+    
+    session.pop('_flashes',None)
+    return render_template('home.html')
 
 @app.route('/facebook')
 def facebook():
@@ -507,42 +540,52 @@ def whatsapp():
 
 @app.route('/living_room')
 def living_room():
+    session.pop('_flashes',None)
     return render_template('living_room.html')
 
 @app.route('/bedroom')
 def bedroom():
+    session.pop('_flashes',None)
     return render_template('bedroom.html')
 
 @app.route('/mattress')
 def mattress():
+    session.pop('_flashes',None)
     return render_template('mattress.html')
 
 @app.route('/kitchen')
 def kitchen():
+    session.pop('_flashes',None)
     return render_template('kitchen.html')
 
 @app.route('/baby_kids')
 def baby_kids():
+    session.pop('_flashes',None)
     return render_template('baby_kids.html')
 
 @app.route('/outdoor')
 def outdoor():
+    session.pop('_flashes',None)
     return render_template('outdoor.html')
 
 @app.route('/home_office')
 def home_office():
+    session.pop('_flashes',None)
     return render_template('home_office.html')
 
 @app.route('/home_decor')
 def home_decor():
+    session.pop('_flashes',None)
     return render_template('home_decor.html')
 
 @app.route('/rugs')
 def rugs():
+    session.pop('_flashes',None)
     return render_template('rugs.html')
 
 @app.route('/lighting')
 def lighting():
+    session.pop('_flashes',None)
     return render_template('lighting.html')
 
 

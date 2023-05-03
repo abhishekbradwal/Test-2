@@ -50,6 +50,7 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
               <!-- Profile  -->
               <a
                 class="dropdown-item"
@@ -58,6 +59,8 @@
                 >Profile</a
               >
 
+              <a class="dropdown-item" href="#">My Orders</a>
+              <a class="dropdown-item" href="#">Account Settings</a>
               <!-- Logout  -->
               <a
                 class="dropdown-item"
@@ -65,8 +68,6 @@
                 id="flask_logout"
                 >Logout</a
               >
-              <a class="dropdown-item" href="#">My Orders</a>
-              <a class="dropdown-item" href="#">Account Settings</a>
             </div>
           </div>
         </div>
@@ -95,13 +96,26 @@
     </div>
     <!-- deligation end -->
 
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+
     <!-- Shop by department-icons -->
 
     <div class="container" id="depart">
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Rugs 
+        Department - Rugs
       </h3>
     </div>
 
@@ -109,8 +123,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -122,18 +134,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Soft Textures
+                  Soft Textures
                 </h5>
                 <p class="card-text text-center">
-                    Add soft textures to your floors with our cozy and inviting rug collection.
+                  Add soft textures to your floors with our cozy and inviting
+                  rug collection.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_1" />
               <input type="hidden" name="price" value="142" />
               <input type="hidden" name="heading" value="Soft Textures" />
-              <input type="hidden" name="description" value="Add soft textures to your floors with our cozy and inviting rug collection." />
+              <input
+                type="hidden"
+                name="description"
+                value="Add soft textures to your floors with our cozy and inviting rug collection."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -150,16 +167,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Colorful Accents
+                  Colorful Accents
                 </h5>
                 <p class="card-text text-center">
-                    Infuse vibrant and colorful accents into your space with our eye-catching rugs.
+                  Infuse vibrant and colorful accents into your space with our
+                  eye-catching rugs.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_2" />
               <input type="hidden" name="price" value="86" />
               <input type="hidden" name="heading" value="Colorful Accents" />
-              <input type="hidden" name="description" value="Infuse vibrant and colorful accents into your space with our eye-catching rugs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Infuse vibrant and colorful accents into your space with our eye-catching rugs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -178,16 +200,25 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Patterned Perfection
+                  Patterned Perfection
                 </h5>
                 <p class="card-text text-center">
-                    Achieve patterned perfection with our stylish and intricately designed rugs.
+                  Achieve patterned perfection with our stylish and intricately
+                  designed rugs.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_3" />
               <input type="hidden" name="price" value="75" />
-              <input type="hidden" name="heading" value="Patterned Perfection" />
-              <input type="hidden" name="description" value="Achieve patterned perfection with our stylish and intricately designed rugs." />
+              <input
+                type="hidden"
+                name="heading"
+                value="Patterned Perfection"
+              />
+              <input
+                type="hidden"
+                name="description"
+                value="Achieve patterned perfection with our stylish and intricately designed rugs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -206,16 +237,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Plush Comfort
+                  Plush Comfort
                 </h5>
                 <p class="card-text text-center">
-                    Experience the ultimate in plush comfort with our high-quality and luxurious rug.
+                  Experience the ultimate in plush comfort with our high-quality
+                  and luxurious rug.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_4" />
               <input type="hidden" name="price" value="67" />
               <input type="hidden" name="heading" value="Plush Comfort" />
-              <input type="hidden" name="description" value="Experience the ultimate in plush comfort with our high-quality and luxurious rug." />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience the ultimate in plush comfort with our high-quality and luxurious rug."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -234,16 +270,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Vintage Vibes
+                  Vintage Vibes
                 </h5>
                 <p class="card-text text-center">
-                    Add vintage vibes to your home with our unique and timeless rug designs.
+                  Add vintage vibes to your home with our unique and timeless
+                  rug designs.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_5" />
               <input type="hidden" name="price" value="72" />
               <input type="hidden" name="heading" value="Vintage Vibes" />
-              <input type="hidden" name="description" value="Add vintage vibes to your home with our unique and timeless rug designs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Add vintage vibes to your home with our unique and timeless rug designs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -262,16 +303,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Contemporary Chic
+                  Contemporary Chic
                 </h5>
                 <p class="card-text text-center">
-                    Create a contemporary and chic look with our modern and sleek rug collection.
+                  Create a contemporary and chic look with our modern and sleek
+                  rug collection.
                 </p>
               </div>
               <input type="hidden" name="category" value="rugs_6" />
               <input type="hidden" name="price" value="432" />
-              <input type="hidden" name="heading" value= "Contemporary Chic" />
-              <input type="hidden" name="description" value="Create a contemporary and chic look with our modern and sleek rug collection." />
+              <input type="hidden" name="heading" value="Contemporary Chic" />
+              <input
+                type="hidden"
+                name="description"
+                value="Create a contemporary and chic look with our modern and sleek rug collection."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
