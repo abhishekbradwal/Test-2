@@ -509,8 +509,6 @@ def place_order():
 
         return render_template('place_order.html', category=category, price = price, heading = heading, description = description)
     
-
-####################################################
 # order confirmed
 @app.route('/confirmed_order', methods = ['GET', 'POST'])
 def confirmed_order():
@@ -555,8 +553,6 @@ def confirmed_order():
     
     session.pop('_flashes',None)
     return render_template('home.html')
-
-##############################################################
 
 @app.route('/facebook')
 def facebook():
