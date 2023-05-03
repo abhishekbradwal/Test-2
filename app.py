@@ -6,12 +6,13 @@ app = Flask(__name__)
 app.secret_key = "$rtu&&3420@erWXVY"
 app.permanent_session_lifetime = timedelta(minutes = 60)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///users.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
 class users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable = False)
     username = db.Column(db.String(40), nullable = False)
     address = db.Column(db.String(80), nullable = False)
@@ -19,6 +20,23 @@ class users(db.Model):
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     confirm_password = db.Column(db.String(100), nullable=False)
+    relation = db.relationship('owner', backref = 'users')
+
+class owner(db.Model):
+    _customer_id = db.Column("id", db.Integer, primary_key=True)
+    customer_name = db.Column(db.String(40), nullable = False)
+    customer_username = db.Column(db.String(40), nullable = False)
+    customer_address = db.Column(db.String(80), nullable = False)
+    customer_phone_number = db.Column(db.Integer, nullable = False)
+    customer_email = db.Column(db.String(100), nullable=False)
+
+    customer_product_category_page = db.Column(db.String(40), nullable = False)
+    customer_product_category_page_index = db.Column(db.String(40), nullable = False)
+    customer_product_price = db.Column(db.String(40), nullable = False)
+    customer_product_heading = db.Column(db.String(40), nullable = False)
+    customer_product_description = db.Column(db.String(40), nullable = False)
+
+    users_id = db.Column(db.Integer, db.ForeignKey('users.id') )
 
 @app.route('/')
 def login():
@@ -492,14 +510,29 @@ def place_order():
         return render_template('place_order.html', category=category, price = price, heading = heading, description = description)
     
 
+####################################################
 # order confirmed
 @app.route('/confirmed_order', methods = ['GET', 'POST'])
 def confirmed_order():
     if request.method == 'POST':
+
+        # product details
         confirmed_category_page = request.form['confirmed_category_page']
         confirmed_price = request.form['confirmed_price']
         confirmed_heading = request.form['confirmed_heading']
         confirmed_description = request.form['confirmed_description']
+
+        #user details
+        name = ""; username = ""; address = ""; phone_number = ""; 
+        email = session['email']
+        user_info = users.query.all()
+        for rows in user_info:
+            email_id = rows.email
+            if email_id == email:
+                name = rows.name
+                username = rows.username
+                address = rows.address
+                phone_number = rows.phone_number
 
         # category is the html page
         category = ""
@@ -509,7 +542,12 @@ def confirmed_order():
         for index in range(_count):
             category = category + confirmed_category_page[index]
 
+        category_name = category
         category = category + '.html'
+
+        user_info = owner(customer_name = name,customer_username = username,customer_address = address,customer_phone_number = phone_number,customer_email = email,customer_product_category_page = category_name,customer_product_category_page_index = confirmed_category_page,customer_product_price = confirmed_price,customer_product_heading = confirmed_heading,customer_product_description = confirmed_description)
+        db.session.add(user_info)
+        db.session.commit()
 
         session.pop('_flashes',None)
         flash('Order placed successfully')
@@ -517,6 +555,8 @@ def confirmed_order():
     
     session.pop('_flashes',None)
     return render_template('home.html')
+
+##############################################################
 
 @app.route('/facebook')
 def facebook():
