@@ -1,6 +1,12 @@
-from flask import Flask, render_template, url_for, redirect, request, flash, session, jsonify
+from flask import Flask, render_template, url_for, redirect, request, flash, session, jsonify,Response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
+import io
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+from data_man import statistics,dgraph1
+import numpy as np
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 app.secret_key = "$rtu&&3420@erWXVY"
@@ -60,6 +66,10 @@ def login_validation():
         is_email_present = users.query.filter_by(email = email).first()
         is_password_present = users.query.filter_by(password = password).first()
 
+        if email=="owner@inv.com" and password=="ownerofinventory":
+            session['email']=email
+            return redirect(url_for('Owner'))
+
         if email == "":
             session.pop('_flashes', None)
             flash('Email cannot be empty')
@@ -100,7 +110,44 @@ def login_validation():
             return redirect(url_for('email'))
 
         return render_template('login.html')
-        
+
+@app.route('/Owner')
+def Owner():
+    # session['email'] = email 
+    nusers,norders,popproduct,osum=statistics()
+    return render_template('sample.html',norders=norders,nusers=nusers,popproduct=popproduct,osum=osum)
+
+@app.route('/plot1.png')
+def plot_png():
+    fig = create_figure()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+def create_figure():
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    table=dgraph1()
+    axis.bar(table.index,table['customer_product_price'],color ='maroon')
+    axis.set_ylabel('SALES IN DOLORS $', labelpad=15, color='#333333')
+    axis.set_xlabel('CATEGORY', labelpad=15, color='#333333')
+    axis.set_xticklabels(axis.get_xticklabels(), rotation=45, ha="right")
+    return fig
+
+
+@app.route('/plot2.png')
+def plot_png2():
+    fig = create_figure2()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+def create_figure2():
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    table=dgraph1()
+    axis.pie(table['customer_product_price'],labels=table.index)
+    return fig
 
 @app.route('/register')
 def register():
