@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Order Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/place_order.css') }}"
+    />
+  </head>
+  <body>
+
+    <main>
+      <article class="card">
+        <div class="card__img__container">
+          <img
+            class="card__img"
+            src="{{ url_for('static', filename='image/' + customer_product_category_page_index) }}"
+            alt="dancing-with-music-illustration"
+          />
+        </div>
+        <div class="card__content">
+          <h1 class="card__title">{{customer_product_heading}}</h1>
+          <p class="card__desc">{{customer_product_description}}</p>
+
+          <div class="plan__info">
+            <img
+              class="plan__icon"
+              src="{{ url_for('static', filename='image/price_tag.png') }}"
+              height="43"
+              width="43"
+              alt="{{category}}"
+            />
+            <div class="plan__detail">
+              <h2 class="plan__title">Price</h2>
+              <p class="plan__price">{{cost_price}}</p>
+            </div>
+          </div>
+
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+            messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{msg}}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+
+          <!-- render previous page  -->
+          <a href="{{url_for('myorders')}}" > <button class="btn cancel__btn" type="button">Back</button> </a>
+        </div>
+      </article>
+    </main>
+
+    <div class="attribution">
+      Sold by <a href="{{url_for('home')}}"> The Inventory Emporium! </a>
+    </div>
+  </body>
+</html>

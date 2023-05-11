@@ -50,6 +50,7 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
               <!-- Profile  -->
               <a
                 class="dropdown-item"
@@ -58,6 +59,12 @@
                 >Profile</a
               >
 
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
               <!-- Logout  -->
               <a
                 class="dropdown-item"
@@ -65,9 +72,6 @@
                 id="flask_logout"
                 >Logout</a
               >
-              <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-              <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-              <a class="dropdown-item" href="#">Account Settings</a>
             </div>
           </div>
         </div>
@@ -97,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -115,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Bedroom
+        Department - Bedroom
       </h3>
     </div>
 
@@ -123,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -136,18 +138,22 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Cozy Retreat
+                  Cozy Retreat
                 </h5>
                 <p class="card-text text-center">
-                    Sleep in your own private sanctuary and wake up refreshed.
+                  Sleep in your own private sanctuary and wake up refreshed.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_1" />
               <input type="hidden" name="price" value="367" />
               <input type="hidden" name="heading" value="Cozy Retreat" />
-              <input type="hidden" name="description" value="Sleep in your own private sanctuary and wake up refreshed." />
+              <input
+                type="hidden"
+                name="description"
+                value="Sleep in your own private sanctuary and wake up refreshed."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -164,16 +170,20 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Peaceful Haven
+                  Peaceful Haven
                 </h5>
                 <p class="card-text text-center">
-                    Experience blissful sleep in our comfortable bedrooms.
+                  Experience blissful sleep in our comfortable bedrooms.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_2" />
               <input type="hidden" name="price" value="345" />
               <input type="hidden" name="heading" value="Peaceful Haven" />
-              <input type="hidden" name="description" value="Experience blissful sleep in our comfortable bedrooms." />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience blissful sleep in our comfortable bedrooms."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -192,16 +202,20 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Sleeping Quarters
+                  Sleeping Quarters
                 </h5>
                 <p class="card-text text-center">
-                    Transform your sleeping space into a peaceful haven.
+                  Transform your sleeping space into a peaceful haven.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_3" />
               <input type="hidden" name="price" value="294" />
               <input type="hidden" name="heading" value="Sleeping Quarters" />
-              <input type="hidden" name="description" value="Transform your sleeping space into a peaceful haven." />
+              <input
+                type="hidden"
+                name="description"
+                value="Transform your sleeping space into a peaceful haven."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -220,16 +234,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Restful Oasis
+                  Restful Oasis
                 </h5>
                 <p class="card-text text-center">
-                    Indulge in luxury and comfort with our premium bedroom designs.
+                  Indulge in luxury and comfort with our premium bedroom
+                  designs.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_4" />
               <input type="hidden" name="price" value="485" />
               <input type="hidden" name="heading" value="Restful Oasis" />
-              <input type="hidden" name="description" value="Indulge in luxury and comfort with our premium bedroom designs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Indulge in luxury and comfort with our premium bedroom designs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -248,16 +267,20 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Dreamy Sanctuary
+                  Dreamy Sanctuary
                 </h5>
                 <p class="card-text text-center">
-                    Get a good night's rest in our cozy bedrooms.
+                  Get a good night's rest in our cozy bedrooms.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_5" />
               <input type="hidden" name="price" value="649" />
               <input type="hidden" name="heading" value="Dreamy Sanctuary" />
-              <input type="hidden" name="description" value="Get a good night's rest in our cozy bedrooms." />
+              <input
+                type="hidden"
+                name="description"
+                value="Get a good night's rest in our cozy bedrooms."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -276,16 +299,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Comfortable Space
+                  Comfortable Space
                 </h5>
                 <p class="card-text text-center">
-                    Create your own dreamy escape with our beautifully designed bedrooms.
+                  Create your own dreamy escape with our beautifully designed
+                  bedrooms.
                 </p>
               </div>
               <input type="hidden" name="category" value="bedroom_6" />
               <input type="hidden" name="price" value="532" />
-              <input type="hidden" name="heading" value= "Comfortable Space" />
-              <input type="hidden" name="description" value="Create your own dreamy escape with our beautifully designed bedrooms." />
+              <input type="hidden" name="heading" value="Comfortable Space" />
+              <input
+                type="hidden"
+                name="description"
+                value="Create your own dreamy escape with our beautifully designed bedrooms."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -116,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Home Decor
+        Department - Home Decor
       </h3>
     </div>
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -137,18 +138,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Stylish Accents
+                  Stylish Accents
                 </h5>
                 <p class="card-text text-center">
-                    Elevate your living space with stylish accents that reflect your personality.
+                  Elevate your living space with stylish accents that reflect
+                  your personality.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_1" />
               <input type="hidden" name="price" value="234" />
               <input type="hidden" name="heading" value="Stylish Accents" />
-              <input type="hidden" name="description" value="Elevate your living space with stylish accents that reflect your personality." />
+              <input
+                type="hidden"
+                name="description"
+                value="Elevate your living space with stylish accents that reflect your personality."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -165,16 +171,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Modern Chic
+                  Modern Chic
                 </h5>
                 <p class="card-text text-center">
-                    Discover modern chic decor that adds sophistication and elegance to your home.
+                  Discover modern chic decor that adds sophistication and
+                  elegance to your home.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_2" />
               <input type="hidden" name="price" value="186" />
               <input type="hidden" name="heading" value="Modern Chic" />
-              <input type="hidden" name="description" value="Discover modern chic decor that adds sophistication and elegance to your home." />
+              <input
+                type="hidden"
+                name="description"
+                value="Discover modern chic decor that adds sophistication and elegance to your home."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -193,16 +204,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Timeless Elegance
+                  Timeless Elegance
                 </h5>
                 <p class="card-text text-center">
-                    Achieve timeless elegance with our carefully curated selection of home decor.
+                  Achieve timeless elegance with our carefully curated selection
+                  of home decor.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_3" />
               <input type="hidden" name="price" value="137" />
               <input type="hidden" name="heading" value="Timeless Elegance" />
-              <input type="hidden" name="description" value="Achieve timeless elegance with our carefully curated selection of home decor." />
+              <input
+                type="hidden"
+                name="description"
+                value="Achieve timeless elegance with our carefully curated selection of home decor."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -221,16 +237,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Rustic Charm
+                  Rustic Charm
                 </h5>
                 <p class="card-text text-center">
-                    Bring warmth and character to your space with rustic charm decor.
+                  Bring warmth and character to your space with rustic charm
+                  decor.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_4" />
               <input type="hidden" name="price" value="139" />
               <input type="hidden" name="heading" value="Rustic Charm" />
-              <input type="hidden" name="description" value="Bring warmth and character to your space with rustic charm decor." />
+              <input
+                type="hidden"
+                name="description"
+                value="Bring warmth and character to your space with rustic charm decor."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -249,16 +270,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Bohemian Vibes
+                  Bohemian Vibes
                 </h5>
                 <p class="card-text text-center">
-                    Embrace bohemian vibes with our eclectic and free-spirited home decor.
+                  Embrace bohemian vibes with our eclectic and free-spirited
+                  home decor.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_5" />
               <input type="hidden" name="price" value="125" />
               <input type="hidden" name="heading" value="Bohemian Vibes" />
-              <input type="hidden" name="description" value="Embrace bohemian vibes with our eclectic and free-spirited home decor." />
+              <input
+                type="hidden"
+                name="description"
+                value="Embrace bohemian vibes with our eclectic and free-spirited home decor."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -277,16 +303,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Classic Chic
+                  Classic Chic
                 </h5>
                 <p class="card-text text-center">
-                    Add a touch of classic chic to your home with our elegant decor options.
+                  Add a touch of classic chic to your home with our elegant
+                  decor options.
                 </p>
               </div>
               <input type="hidden" name="category" value="home_decor_6" />
               <input type="hidden" name="price" value="319" />
-              <input type="hidden" name="heading" value= "Classic Chic" />
-              <input type="hidden" name="description" value="Add a touch of classic chic to your home with our elegant decor options." />
+              <input type="hidden" name="heading" value="Classic Chic" />
+              <input
+                type="hidden"
+                name="description"
+                value="Add a touch of classic chic to your home with our elegant decor options."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

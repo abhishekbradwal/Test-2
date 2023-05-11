@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -116,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Outdoor
+        Department - Outdoor
       </h3>
     </div>
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -137,18 +138,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Nature's Retreat
+                  Nature's Retreat
                 </h5>
                 <p class="card-text text-center">
-                    Escape to nature's retreat with our stunning outdoor living spaces.
+                  Escape to nature's retreat with our stunning outdoor living
+                  spaces.
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_1" />
               <input type="hidden" name="price" value="167" />
               <input type="hidden" name="heading" value="Nature's Retreat" />
-              <input type="hidden" name="description" value="Escape to nature's retreat with our stunning outdoor living spaces." />
+              <input
+                type="hidden"
+                name="description"
+                value="Escape to nature's retreat with our stunning outdoor living spaces."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -165,16 +171,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Garden Oasis
+                  Garden Oasis
                 </h5>
                 <p class="card-text text-center">
-                    Create a garden oasis that's perfect for relaxing and entertaining.
+                  Create a garden oasis that's perfect for relaxing and
+                  entertaining.
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_2" />
               <input type="hidden" name="price" value="145" />
               <input type="hidden" name="heading" value="Garden Oasis" />
-              <input type="hidden" name="description" value="Create a garden oasis that's perfect for relaxing and entertaining." />
+              <input
+                type="hidden"
+                name="description"
+                value="Create a garden oasis that's perfect for relaxing and entertaining."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -193,16 +204,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Outdoor Haven
+                  Outdoor Haven
                 </h5>
                 <p class="card-text text-center">
-                    Transform your outdoor area into an inviting haven for family and friends
+                  Transform your outdoor area into an inviting haven for family
+                  and friends
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_3" />
               <input type="hidden" name="price" value="194" />
               <input type="hidden" name="heading" value="Outdoor Haven" />
-              <input type="hidden" name="description" value="Transform your outdoor area into an inviting haven for family and friends" />
+              <input
+                type="hidden"
+                name="description"
+                value="Transform your outdoor area into an inviting haven for family and friends"
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -221,16 +237,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Patio Paradise
+                  Patio Paradise
                 </h5>
                 <p class="card-text text-center">
-                    Experience the ultimate in outdoor relaxation with our patio paradise designs.
+                  Experience the ultimate in outdoor relaxation with our patio
+                  paradise designs.
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_4" />
               <input type="hidden" name="price" value="285" />
               <input type="hidden" name="heading" value="Patio Paradise" />
-              <input type="hidden" name="description" value="Experience the ultimate in outdoor relaxation with our patio paradise designs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience the ultimate in outdoor relaxation with our patio paradise designs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -249,16 +270,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Backyard Escape
+                  Backyard Escape
                 </h5>
                 <p class="card-text text-center">
-                    Step into your own backyard escape and leave the stress of the day behind.
+                  Step into your own backyard escape and leave the stress of the
+                  day behind.
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_5" />
               <input type="hidden" name="price" value="329" />
               <input type="hidden" name="heading" value="Backyard Escape" />
-              <input type="hidden" name="description" value="Step into your own backyard escape and leave the stress of the day behind." />
+              <input
+                type="hidden"
+                name="description"
+                value="Step into your own backyard escape and leave the stress of the day behind."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -277,16 +303,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Serene Sanctuary
+                  Serene Sanctuary
                 </h5>
                 <p class="card-text text-center">
-                    Unwind in a serene sanctuary that's designed for peace and tranquility.
+                  Unwind in a serene sanctuary that's designed for peace and
+                  tranquility.
                 </p>
               </div>
               <input type="hidden" name="category" value="outdoor_6" />
               <input type="hidden" name="price" value="246" />
-              <input type="hidden" name="heading" value= "Serene Sanctuary" />
-              <input type="hidden" name="description" value="Unwind in a serene sanctuary that's designed for peace and tranquility." />
+              <input type="hidden" name="heading" value="Serene Sanctuary" />
+              <input
+                type="hidden"
+                name="description"
+                value="Unwind in a serene sanctuary that's designed for peace and tranquility."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
