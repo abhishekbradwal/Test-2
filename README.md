@@ -47,6 +47,22 @@ The following dependencies are used in this project:
 2. SQLAlchemy: A Python SQL toolkit and Object-Relational Mapping (ORM) library.
 3. Bootstrap: A popular CSS framework for building responsive websites.
 
+## Add the command
+The following command should be executed in the python terminal to create the instance.
+1. from app import app,db
+2. app.app_context().push()
+3. db.create_all()
+
+   Delete any existing pycache and instance directory if exists. Then run the command.
+   
+## Update the path
+Update the path in data_man.py 
+
+1. Replace cnx = sqlite3.connect('/Users/ankitanand/Desktop/Test 2/instance/db.sqlite3') with your db.sqlite3 path
+<img width="661" alt="Screenshot 2023-05-11 at 7 00 11 PM" src="https://github.com/Ankit-Ransh/Test-2/assets/98517507/4599b4a5-6851-4150-8a0e-1cb05c8567a6">
+<img width="759" alt="Screenshot 2023-05-11 at 7 00 17 PM" src="https://github.com/Ankit-Ransh/Test-2/assets/98517507/092bc086-f7bf-4297-a693-32f52806005c">
+
+
 ## Usage
 1. Upon accessing the website, you will see a list of furniture items in the inventory.
 2. To add a new furniture item, click on the "Add Furniture" button and fill out the form.
