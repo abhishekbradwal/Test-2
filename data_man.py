@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def statistics():
-    cnx = sqlite3.connect('D:\Ribhav language\python_class\python_class_project\Test-2\instance\db.sqlite3')
+    cnx = sqlite3.connect('/Users/ankitanand/Desktop/Test 2/instance/db.sqlite3')
     df = pd.read_sql_query("SELECT * FROM owner", cnx)
     a=df['customer_username'].nunique()
     b=len(df)
@@ -14,7 +14,7 @@ def statistics():
     return a,b,c,d
 
 def dgraph1():
-    cnx = sqlite3.connect('D:\Ribhav language\python_class\python_class_project\Test-2\instance\db.sqlite3')
+    cnx = sqlite3.connect('/Users/ankitanand/Desktop/Test 2/instance/db.sqlite3')
     df = pd.read_sql_query("SELECT * FROM owner", cnx)
     df['customer_product_price']=pd.to_numeric(df['customer_product_price'])
     table = pd.pivot_table(df, values='customer_product_price', index=['customer_product_category_page'],aggfunc=np.sum)

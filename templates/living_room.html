@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -147,10 +148,14 @@
               <input type="hidden" name="category" value="living_room_1" />
               <input type="hidden" name="price" value="549" />
               <input type="hidden" name="heading" value="Timeless Elegance" />
-              <input type="hidden" name="description" value="Whether you're lounging with family or entertaining guests,
-              our sofas provide ample seating for everyone." />
+              <input
+                type="hidden"
+                name="description"
+                value="Whether you're lounging with family or entertaining guests,
+              our sofas provide ample seating for everyone."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -177,8 +182,12 @@
               <input type="hidden" name="category" value="living_room_2" />
               <input type="hidden" name="price" value="580" />
               <input type="hidden" name="heading" value="Ultimate Comfort" />
-              <input type="hidden" name="description" value="Our sofas are crafted with the finest materials and expert
-              craftsmanship, ensuring durability and longevity." />
+              <input
+                type="hidden"
+                name="description"
+                value="Our sofas are crafted with the finest materials and expert
+              craftsmanship, ensuring durability and longevity."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -206,9 +215,17 @@
               </div>
               <input type="hidden" name="category" value="living_room_3" />
               <input type="hidden" name="price" value="499" />
-              <input type="hidden" name="heading" value="Customizable Designs" />
-              <input type="hidden" name="description" value="Experience unmatched comfort and style with our luxurious
-              sofas, designed to elevate your living space." />
+              <input
+                type="hidden"
+                name="heading"
+                value="Customizable Designs"
+              />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience unmatched comfort and style with our luxurious
+              sofas, designed to elevate your living space."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -237,8 +254,12 @@
               <input type="hidden" name="category" value="living_room_4" />
               <input type="hidden" name="price" value="487" />
               <input type="hidden" name="heading" value="Luxurious Materials" />
-              <input type="hidden" name="description" value="With plush cushions and supportive backrests, our sofas offer
-              the ultimate relaxation experience." />
+              <input
+                type="hidden"
+                name="description"
+                value="With plush cushions and supportive backrests, our sofas offer
+              the ultimate relaxation experience."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -267,8 +288,12 @@
               <input type="hidden" name="category" value="living_room_5" />
               <input type="hidden" name="price" value="730" />
               <input type="hidden" name="heading" value="Functional Style" />
-              <input type="hidden" name="description" value="Our sofas are not only comfortable, but also visually
-              stunning, adding a touch of elegance to any room." />
+              <input
+                type="hidden"
+                name="description"
+                value="Our sofas are not only comfortable, but also visually
+              stunning, adding a touch of elegance to any room."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -296,9 +321,13 @@
               </div>
               <input type="hidden" name="category" value="living_room_6" />
               <input type="hidden" name="price" value="899" />
-              <input type="hidden" name="heading" value= "Affordable Luxury" />
-              <input type="hidden" name="description" value="Invest in the centerpiece of your home and enjoy a lifetime of
-              comfort and beauty with our exquisite sofas." />
+              <input type="hidden" name="heading" value="Affordable Luxury" />
+              <input
+                type="hidden"
+                name="description"
+                value="Invest in the centerpiece of your home and enjoy a lifetime of
+              comfort and beauty with our exquisite sofas."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

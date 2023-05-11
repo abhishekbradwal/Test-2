@@ -601,6 +601,49 @@ def confirmed_order():
     session.pop('_flashes',None)
     return render_template('home.html')
 
+#########################################################
+@app.route('/myorders')
+def myorders():
+    email = session['email']; username = "";
+    customer_product_category_page = "";
+    customer_product_price = float(0); customer_product_heading = "";
+    user_info = owner.query.all(); cnt_product = 0
+    customer_product_category_page_index = ""; customer_product_description = "";
+    my_orders = [[]]
+    for rows in user_info:
+        email_id = rows.customer_email
+        my_orders_section = []
+
+        if email_id == email:
+            username = rows.customer_username
+            customer_product_category_page = rows.customer_product_category_page
+            customer_product_heading = rows.customer_product_heading
+            customer_product_price = float(rows.customer_product_price)
+            customer_product_category_page_index = rows.customer_product_category_page_index
+            customer_product_description = rows.customer_product_description
+            cnt_product += 1
+            my_orders_section.append(username)
+            my_orders_section.append(customer_product_category_page);
+            my_orders_section.append(customer_product_heading)
+            my_orders_section.append(customer_product_price)
+            my_orders_section.append(customer_product_category_page_index)
+            my_orders_section.append(customer_product_description)
+            my_orders.append(my_orders_section)
+
+    return render_template('myorders.html',cnt_product = cnt_product,my_orders = my_orders)
+
+@app.route('/render_image', methods = ['GET','POST'])
+def render_image():
+    if request.method == 'POST':
+        customer_product_category_page_index = request.form['customer_product_category_page_index']
+        customer_product_heading = request.form['customer_product_heading']
+        customer_product_description = request.form['customer_product_description']
+        cost_price = request.form['cost_price']
+        return render_template('show_image.html',customer_product_category_page_index = customer_product_category_page_index,customer_product_heading = customer_product_heading,customer_product_description = customer_product_description,cost_price = cost_price)
+
+    return redirect('myorders')
+#########################################################
+
 @app.route('/facebook')
 def facebook():
   return redirect('https://www.facebook.com/')

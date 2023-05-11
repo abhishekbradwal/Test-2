@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -116,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Lighting 
+        Department - Lighting
       </h3>
     </div>
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -137,18 +138,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Ambient Glow
+                  Ambient Glow
                 </h5>
                 <p class="card-text text-center">
-                    Create an ambient glow in your space with our versatile lighting options.
+                  Create an ambient glow in your space with our versatile
+                  lighting options.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_1" />
               <input type="hidden" name="price" value="12" />
               <input type="hidden" name="heading" value="Ambient Glow" />
-              <input type="hidden" name="description" value="Create an ambient glow in your space with our versatile lighting options." />
+              <input
+                type="hidden"
+                name="description"
+                value="Create an ambient glow in your space with our versatile lighting options."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -165,16 +171,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Modern Luminance
+                  Modern Luminance
                 </h5>
                 <p class="card-text text-center">
-                    Achieve modern luminance with our sleek and sophisticated lighting designs.
+                  Achieve modern luminance with our sleek and sophisticated
+                  lighting designs.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_2" />
               <input type="hidden" name="price" value="16" />
               <input type="hidden" name="heading" value="Modern Luminance" />
-              <input type="hidden" name="description" value="Achieve modern luminance with our sleek and sophisticated lighting designs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Achieve modern luminance with our sleek and sophisticated lighting designs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -193,16 +204,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Rustic Charm
+                  Rustic Charm
                 </h5>
                 <p class="card-text text-center">
-                    Bring warmth and character to your home with our rustic and charming lighting.
+                  Bring warmth and character to your home with our rustic and
+                  charming lighting.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_3" />
               <input type="hidden" name="price" value="25" />
               <input type="hidden" name="heading" value="Rustic Charm" />
-              <input type="hidden" name="description" value="Bring warmth and character to your home with our rustic and charming lighting." />
+              <input
+                type="hidden"
+                name="description"
+                value="Bring warmth and character to your home with our rustic and charming lighting."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -221,16 +237,25 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Artistic Illumination
+                  Artistic Illumination
                 </h5>
                 <p class="card-text text-center">
-                    Illuminate your space with artistic flair using our unique and creative lighting.
+                  Illuminate your space with artistic flair using our unique and
+                  creative lighting.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_4" />
               <input type="hidden" name="price" value="37" />
-              <input type="hidden" name="heading" value="Artistic Illumination" />
-              <input type="hidden" name="description" value="Illuminate your space with artistic flair using our unique and creative lighting." />
+              <input
+                type="hidden"
+                name="heading"
+                value="Artistic Illumination"
+              />
+              <input
+                type="hidden"
+                name="description"
+                value="Illuminate your space with artistic flair using our unique and creative lighting."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -249,16 +274,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Sleek Shine
+                  Sleek Shine
                 </h5>
                 <p class="card-text text-center">
-                    Add a touch of sleek shine to your home with our stylish and contemporary lighting.
+                  Add a touch of sleek shine to your home with our stylish and
+                  contemporary lighting.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_5" />
               <input type="hidden" name="price" value="22" />
               <input type="hidden" name="heading" value="Sleek Shine" />
-              <input type="hidden" name="description" value="Add a touch of sleek shine to your home with our stylish and contemporary lighting." />
+              <input
+                type="hidden"
+                name="description"
+                value="Add a touch of sleek shine to your home with our stylish and contemporary lighting."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -277,16 +307,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Vintage Radiance
+                  Vintage Radiance
                 </h5>
                 <p class="card-text text-center">
-                    Capture the vintage radiance of a bygone era with our classic and timeless lighting.
+                  Capture the vintage radiance of a bygone era with our classic
+                  and timeless lighting.
                 </p>
               </div>
               <input type="hidden" name="category" value="lighting_6" />
               <input type="hidden" name="price" value="432" />
-              <input type="hidden" name="heading" value= "Vintage Radiance" />
-              <input type="hidden" name="description" value="Capture the vintage radiance of a bygone era with our classic and timeless lighting." />
+              <input type="hidden" name="heading" value="Vintage Radiance" />
+              <input
+                type="hidden"
+                name="description"
+                value="Capture the vintage radiance of a bygone era with our classic and timeless lighting."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

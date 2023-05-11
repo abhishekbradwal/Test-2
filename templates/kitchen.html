@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -116,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Kitchen
+        Department - Kitchen
       </h3>
     </div>
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -137,18 +138,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Culinary Center
+                  Culinary Center
                 </h5>
                 <p class="card-text text-center">
-                    Transform your cooking experience with our state-of-the-art kitchen designs.
+                  Transform your cooking experience with our state-of-the-art
+                  kitchen designs.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_1" />
               <input type="hidden" name="price" value="463" />
               <input type="hidden" name="heading" value="Culinary Center" />
-              <input type="hidden" name="description" value="Transform your cooking experience with our state-of-the-art kitchen designs." />
+              <input
+                type="hidden"
+                name="description"
+                value="Transform your cooking experience with our state-of-the-art kitchen designs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -165,16 +171,20 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Gourmet Haven
+                  Gourmet Haven
                 </h5>
                 <p class="card-text text-center">
-                    Create culinary masterpieces in our gourmet-inspired kitchens.
+                  Create culinary masterpieces in our gourmet-inspired kitchens.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_2" />
               <input type="hidden" name="price" value="289" />
               <input type="hidden" name="heading" value="Gourmet Haven" />
-              <input type="hidden" name="description" value="Create culinary masterpieces in our gourmet-inspired kitchens." />
+              <input
+                type="hidden"
+                name="description"
+                value="Create culinary masterpieces in our gourmet-inspired kitchens."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -193,16 +203,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Modern Kitchen
+                  Modern Kitchen
                 </h5>
                 <p class="card-text text-center">
-                    Upgrade your home with a modern kitchen that's both functional and stylish.
+                  Upgrade your home with a modern kitchen that's both functional
+                  and stylish.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_3" />
               <input type="hidden" name="price" value="359" />
               <input type="hidden" name="heading" value="Modern Kitchen" />
-              <input type="hidden" name="description" value="Upgrade your home with a modern kitchen that's both functional and stylish." />
+              <input
+                type="hidden"
+                name="description"
+                value="Upgrade your home with a modern kitchen that's both functional and stylish."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -221,16 +236,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Homey Bistro
+                  Homey Bistro
                 </h5>
                 <p class="card-text text-center">
-                    Experience the warmth and comfort of a homey bistro in your own kitchen.
+                  Experience the warmth and comfort of a homey bistro in your
+                  own kitchen.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_4" />
               <input type="hidden" name="price" value="436" />
               <input type="hidden" name="heading" value="Homey Bistro" />
-              <input type="hidden" name="description" value="Experience the warmth and comfort of a homey bistro in your own kitchen." />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience the warmth and comfort of a homey bistro in your own kitchen."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -249,16 +269,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Chef's Domain
+                  Chef's Domain
                 </h5>
                 <p class="card-text text-center">
-                    Unleash your inner chef in a domain designed for cooking and entertaining.
+                  Unleash your inner chef in a domain designed for cooking and
+                  entertaining.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_5" />
               <input type="hidden" name="price" value="583" />
               <input type="hidden" name="heading" value="Chef's Domain" />
-              <input type="hidden" name="description" value="Unleash your inner chef in a domain designed for cooking and entertaining." />
+              <input
+                type="hidden"
+                name="description"
+                value="Unleash your inner chef in a domain designed for cooking and entertaining."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -277,16 +302,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Foodie's Paradise
+                  Foodie's Paradise
                 </h5>
                 <p class="card-text text-center">
-                    Discover the ultimate kitchen for foodies with our thoughtfully designed layouts.
+                  Discover the ultimate kitchen for foodies with our
+                  thoughtfully designed layouts.
                 </p>
               </div>
               <input type="hidden" name="category" value="kitchen_6" />
               <input type="hidden" name="price" value="699" />
-              <input type="hidden" name="heading" value= "Foodie's Paradise" />
-              <input type="hidden" name="description" value="Discover the ultimate kitchen for foodies with our thoughtfully designed layouts." />
+              <input type="hidden" name="heading" value="Foodie's Paradise" />
+              <input
+                type="hidden"
+                name="description"
+                value="Discover the ultimate kitchen for foodies with our thoughtfully designed layouts."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

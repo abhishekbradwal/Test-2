@@ -8,7 +8,7 @@
 body {
     background-color: #e8f5ff;
     font-family: Arial;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* NavbarTop */
@@ -30,7 +30,7 @@ body {
     float: right;
     list-style-type: none;
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
     padding: 18px 50px 0 40px;
 }
 
@@ -64,7 +64,7 @@ body {
     border-bottom-right-radius: 25px;
     height: 86%;
     left: 0;
-    overflow-x: hidden;
+    overflow-x: auto;
     padding-top: 20px;
     position: absolute;
     top: 70px;

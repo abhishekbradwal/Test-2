@@ -50,25 +50,28 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-            <a class="dropdown-item" href = "{{url_for('home')}}"> Home </a>
-            <!-- Profile  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('profile')}}"
-              id="flask_profile"
-              >Profile</a
-            >
+              <a class="dropdown-item" href="{{url_for('home')}}"> Home </a>
+              <!-- Profile  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('profile')}}"
+                id="flask_profile"
+                >Profile</a
+              >
 
-            
-            <!-- <a class="dropdown-item" href="#">My Orders</a> -->
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <!-- Logout  -->
-            <a
-              class="dropdown-item"
-              href="{{url_for('logout')}}"
-              id="flask_logout"
-              >Logout</a
-            >
+              <a class="dropdown-item" href="{{url_for('myorders')}}"
+                >My Orders</a
+              >
+              <a class="dropdown-item" href="{{url_for('settings')}}"
+                >Account Settings</a
+              >
+              <!-- Logout  -->
+              <a
+                class="dropdown-item"
+                href="{{url_for('logout')}}"
+                id="flask_logout"
+                >Logout</a
+              >
             </div>
           </div>
         </div>
@@ -98,17 +101,17 @@
     <!-- deligation end -->
 
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-      messages %}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      {% endfor %} {% endif %} {% endwith %}
+    messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{msg}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <!-- Shop by department-icons -->
 
@@ -116,7 +119,7 @@
       <h3
         class="d-flex justify-content-center justify-content-sm-start mt-5 mb-3"
       >
-        Department -  Mattress
+        Department - Mattress
       </h3>
     </div>
 
@@ -124,8 +127,6 @@
 
     <div class="container" id="newOffers">
       <div class="row my-2 justify-content-center">
-
-
         <!-- Image 1 -->
         <div class="col-12 col-sm-6 col-lg-4">
           <form action="{{url_for('place_order')}}" method="POST">
@@ -137,18 +138,23 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Restful Sleep
+                  Restful Sleep
                 </h5>
                 <p class="card-text text-center">
-                    Experience restful sleep with our premium quality and comfortable mattresses.
+                  Experience restful sleep with our premium quality and
+                  comfortable mattresses.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_1" />
               <input type="hidden" name="price" value="34" />
               <input type="hidden" name="heading" value="Restful Sleep" />
-              <input type="hidden" name="description" value="Experience restful sleep with our premium quality and comfortable mattresses." />
+              <input
+                type="hidden"
+                name="description"
+                value="Experience restful sleep with our premium quality and comfortable mattresses."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
-                Buy Now 
+                Buy Now
               </button>
             </div>
           </form>
@@ -165,16 +171,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Plush Comfort
+                  Plush Comfort
                 </h5>
                 <p class="card-text text-center">
-                    Indulge in plush comfort with our soft and cozy mattress options.
+                  Indulge in plush comfort with our soft and cozy mattress
+                  options.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_2" />
               <input type="hidden" name="price" value="86" />
               <input type="hidden" name="heading" value="Plush Comfort" />
-              <input type="hidden" name="description" value="Indulge in plush comfort with our soft and cozy mattress options." />
+              <input
+                type="hidden"
+                name="description"
+                value="Indulge in plush comfort with our soft and cozy mattress options."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -193,16 +204,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Supportive Layers
+                  Supportive Layers
                 </h5>
                 <p class="card-text text-center">
-                    Enjoy supportive layers that provide the perfect balance of comfort and stability.
+                  Enjoy supportive layers that provide the perfect balance of
+                  comfort and stability.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_3" />
               <input type="hidden" name="price" value="37" />
               <input type="hidden" name="heading" value="Supportive Layers" />
-              <input type="hidden" name="description" value="Enjoy supportive layers that provide the perfect balance of comfort and stability." />
+              <input
+                type="hidden"
+                name="description"
+                value="Enjoy supportive layers that provide the perfect balance of comfort and stability."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -221,16 +237,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Cooling Technology
+                  Cooling Technology
                 </h5>
                 <p class="card-text text-center">
-                    Stay cool all night with our advanced cooling technology mattresses.
+                  Stay cool all night with our advanced cooling technology
+                  mattresses.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_4" />
               <input type="hidden" name="price" value="79" />
               <input type="hidden" name="heading" value="Cooling Technology" />
-              <input type="hidden" name="description" value="Stay cool all night with our advanced cooling technology mattresses." />
+              <input
+                type="hidden"
+                name="description"
+                value="Stay cool all night with our advanced cooling technology mattresses."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -249,16 +270,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Luxury Slumber
+                  Luxury Slumber
                 </h5>
                 <p class="card-text text-center">
-                    Treat yourself to luxury slumber with our high-end and opulent mattresses.
+                  Treat yourself to luxury slumber with our high-end and opulent
+                  mattresses.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_5" />
               <input type="hidden" name="price" value="63" />
               <input type="hidden" name="heading" value="Luxury Slumber" />
-              <input type="hidden" name="description" value="Treat yourself to luxury slumber with our high-end and opulent mattresses." />
+              <input
+                type="hidden"
+                name="description"
+                value="Treat yourself to luxury slumber with our high-end and opulent mattresses."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>
@@ -277,16 +303,21 @@
               />
               <div class="card-body">
                 <h5 class="card-title text-center font-weight-bold">
-                    Customized Fit
+                  Customized Fit
                 </h5>
                 <p class="card-text text-center">
-                    Find your perfect fit with our customized mattresses tailored to your needs.
+                  Find your perfect fit with our customized mattresses tailored
+                  to your needs.
                 </p>
               </div>
               <input type="hidden" name="category" value="mattress_6" />
               <input type="hidden" name="price" value="99" />
-              <input type="hidden" name="heading" value= "Customized Fit" />
-              <input type="hidden" name="description" value="Find your perfect fit with our customized mattresses tailored to your needs." />
+              <input type="hidden" name="heading" value="Customized Fit" />
+              <input
+                type="hidden"
+                name="description"
+                value="Find your perfect fit with our customized mattresses tailored to your needs."
+              />
               <button type="submit" class="btn btn-info btn-lg btn-block">
                 Buy Now
               </button>

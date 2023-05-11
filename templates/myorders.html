@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+
+    <!-- Custom Css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/profile.css') }}"
+    />
+
+    <!-- FontAwesome 5 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar top -->
+    <div class="navbar-top">
+      <div class="title">
+        <h1>My Orders</h1>
+      </div>
+
+      <!-- Navbar -->
+      <ul>
+        <li>
+          <a href="{{url_for('home')}}">
+            <i class="fa fa-home fa-2x"></i>
+          </a>
+        </li>
+        <li>
+          <a href="{{url_for('logout')}}">
+            <i class="fa fa-sign-out-alt fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- End -->
+    </div>
+    <!-- End -->
+
+    <!-- Sidenav -->
+    <div class="sidenav">
+      <div class="profile">
+        <img
+          src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png"
+          alt=""
+          width="100"
+          height="100"
+        />
+
+        <div class="name">{{username}}</div>
+        <div class="job">Customer</div>
+      </div>
+
+      <div class="sidenav-url">
+        <div class="url">
+          <a href="{{url_for('myorders')}}" class="active">My Orders</a>
+          <hr align="center" />
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+
+    {% for x in range(cnt_product) %} 
+      {% set customer_product_heading = my_orders[x+1][2] %} 
+      {% set customer_product_category_page = my_orders[x+1][1] %} 
+      {% set cost_price = my_orders[x+1][3] %}
+      {% set customer_product_category_page_index = my_orders[x+1][4] %} 
+      {% set customer_product_description = my_orders[x+1][5] %}
+
+    {% set cost_price = '$' + '%.2f' % cost_price %}
+    {% set customer_product_category_page_index = customer_product_category_page_index + '.png' %}
+
+    <div class="main">
+      <h2>{{customer_product_heading}}</h2>
+      <div class="card">
+        <div class="card-body">
+          <form action="{{ url_for('render_image') }}" method="POST" id="show-image-form">
+            <input type="hidden" name="customer_product_category_page_index" value="{{ customer_product_category_page_index }}">
+            <input type="hidden" name="customer_product_heading" value="{{ customer_product_heading }}">
+            <input type="hidden" name="customer_product_description" value="{{ customer_product_description }}">
+            <input type="hidden" name="cost_price" value="{{ cost_price }}">
+            <a href="#" onclick="document.getElementById('show-image-form').submit(); return false;"><i class="fa fa-pen fa-xs edit"></i></a>
+          </form>
+          <table>
+            <tbody>
+              <tr>
+                <td>Product Name:</td>
+                <td>:</td>
+                <td>{{customer_product_heading}}</td>
+              </tr>
+              <tr>
+                <td>Product Category:</td>
+                <td>:</td>
+                <td>{{customer_product_category_page}}</td>
+              </tr>
+              <tr>
+                <td>Product Price:</td>
+                <td>:</td>
+                <td>{{cost_price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- Main -->
+
+    <!-- End -->
+  </body>
+</html>
