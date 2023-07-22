@@ -7,15 +7,23 @@ from matplotlib.figure import Figure
 from data_man import statistics,dgraph1
 import numpy as np
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+EMAIL = os.environ.get('EMAIL')
+PASSWORD = os.environ.get('PASSWORD')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 app = Flask(__name__)
-app.secret_key = "$rtu&&3420@erWXVY"
-app.permanent_session_lifetime = timedelta(minutes = 60)
+app.secret_key = SECRET_KEY
+app.permanent_session_lifetime = timedelta(minutes = 600)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
 
 class users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -66,7 +74,7 @@ def login_validation():
         is_email_present = users.query.filter_by(email = email).first()
         is_password_present = users.query.filter_by(password = password).first()
 
-        if email=="owner@inv.com" and password=="ownerofinventory":
+        if email==EMAIL and password==PASSWORD:
             session['email']=email
             return redirect(url_for('Owner'))
 
