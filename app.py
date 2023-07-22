@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import os
+from flask_cors import CORS
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,6 +19,7 @@ PASSWORD = os.environ.get('PASSWORD')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 app = Flask(__name__)
+CORS(app) 
 app.secret_key = SECRET_KEY
 app.permanent_session_lifetime = timedelta(minutes = 600)
 
@@ -730,8 +732,7 @@ def logout():
     flash('Logged out successfully')
     return render_template('login.html')
 
-with app.app_context():
-    db.create_all()
-
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
